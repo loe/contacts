@@ -1,4 +1,4 @@
-require "json/add/rails"
+require "json"
 
 class Contacts
   class Gmail < Base
@@ -53,7 +53,6 @@ class Contacts
       data.gsub!(/^while \(true\); &&&START&&&/, '')
       data.gsub!(/ &&&END&&&$/, '')
       data.gsub!(/\t/, ' ') # tabs in the note field cause errors with JSON.parse
-      data.gsub!(/[\t\x00-\x1F]/, " ") # strip control characters
 
       @contacts = JSON.parse(data)['Body']['Contacts'] || {}
 
@@ -64,16 +63,13 @@ class Contacts
 
       # Default format.
       # ['Name', 'Email1', 'Email2', ...]
-      if @contacts != nil
-        @contacts = @contacts.delete_if {|c| c["Emails"].nil?}.map do |c|
-          name, emails = c.values_at "Name", "Emails"
-          emails = emails.first.values
-          [name, emails].flatten
-        end
-      else
-        []
+      @contacts = @contacts.delete_if {|c| c["Emails"].nil?}.map do |c|
+        name, emails, company = c.values_at "Name", "Emails", "Company"
+        emails = emails.first.values
+        [name, emails, company].flatten
       end
-    end    
+    end
+    
   end
 
   TYPES[:gmail] = Gmail

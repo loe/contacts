@@ -72,7 +72,7 @@ class Contacts
       data = CSV.parse(data)
       col_names = data.shift
       @contacts = data.map do |person|
-        [[person[0], person[1], person[2]].delete_if{|i|i.empty?}.join(" "), person[4]] unless person[4].empty?
+        [[person[0], person[1], person[2]].delete_if{|i|i.empty?}.join(" "), person[4], person[21]] unless person[4].empty?
       end.compact
     end
     

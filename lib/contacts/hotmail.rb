@@ -103,10 +103,10 @@ class Contacts
       data = CSV.parse(data.join("\r\n").gsub('"', ''), ';')
       col_names = data.shift
 
-      @contacts = data.delete_if{|person|person[0].nil?}.map do |person|
+      @contacts = data.map do |person|
         person = person[0].split(",")
         next unless (idx = person.index('SMTP'))
-        [[person[1], person[2], person[3]].delete_if{|i|i.empty?}.join(" "), person[idx - 1]] unless person[idx - 1].nil?
+        [[person[1], person[2], person[3]].delete_if{|i|i.empty?}.join(" "), person[idx - 1], person[5]] unless person[idx - 1].nil?
       end.compact 
     end
     
