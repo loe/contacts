@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name = "contacts"
+  s.name = "contacts-onehub"
   s.version = "1.0.11-onehub"
   s.date = "2008-05-19"
   s.summary = "A universal interface to grab contact list information from various providers including Yahoo, Gmail, Hotmail, and Plaxo."
