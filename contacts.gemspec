@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = "contacts"
-  s.version = "1.0.12"
-  s.date = "2008-05-19"
+  s.version = "1.0.13"
+  s.date = "2008-06-04"
   s.summary = "A universal interface to grab contact list information from various providers including Yahoo, Gmail, Hotmail, and Plaxo."
   s.email = "loe@onehub.com"
-  s.homepage = "http://github.com/WALoeIII/contacts"
+  s.homepage = "http://github.com/loe/contacts"
   s.description = "A universal interface to grab contact list information from various providers including Yahoo, Gmail, Hotmail, and Plaxo."
   s.has_rdoc = false
   s.authors = ["W. Andrew Loe III"]
